@@ -10,6 +10,6 @@ $response = curl_exec($ch);
 if (curl_errno($ch))
     echo curl_errno($ch);
 else
-    $decoded = json_decode($response, true);
+    $decoded = json_decode($ressponse, true);
 var_dump($decoded);
 curl_close($ch);
