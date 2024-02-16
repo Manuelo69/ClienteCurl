@@ -14,6 +14,6 @@ $response = curl_exec($ch);
 if (curl_errno($ch)) {
     echo 'Error:' . curl_errno($ch);
 } else {
-    echo "Animal borrado correctamente";
+    echo $response;
 }
 curl_close($ch);
