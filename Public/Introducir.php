@@ -2,9 +2,9 @@
 
 
 // URL a la que se enviará la petición POST
-$url = 'http://127.0.0.1:8000/rest/insertar';
+$url = 'http://localhost:8001/rest/insertar';
 $ch = curl_init($url);
-// Datos que se enviarán en la solicitud POST (puedes ajustar esto según tus necesidades)
+// Datos que se enviarán en la solicitud POST 
 $postData = array(
     'especie' => 'Halcon',
     'slug' => 'halcon',
@@ -13,32 +13,27 @@ $postData = array(
     'fechaNacimiento' => "2018-01-25",
     'alimentacion' => 'de to',
     'descripcion' => 'Está to guapo'
-    // Agrega más campos según sea necesario
 );
-
-// Inicializar la sesión cURL
-
-$datos_convertidos = http_build_query($postData);
 // Configurar opciones cURL
 //curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, TRUE);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $datos_convertidos);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+//obtener codigo de estado HTTP
+//curl_getinfo();
+
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
 // Ejecutar la solicitud y obtener la respuesta
 $response = curl_exec($ch);
-
+//echo var_dump($response);
+/*
 // Verificar errores
 if (curl_errno($ch))
     echo curl_errno($ch);
-else
-    $decoded = json_decode($response, true);
-
-if ($decoded !== null) {
+else {
+    $decoded = json_decode($response,true);
     var_dump($decoded);
-} else {
-    echo 'Error al decodificar la respuesta JSON';
+    echo $decoded['message'];
 }
-
-// Cerrar la sesión cURL
+// Cerrar la sesión cURL*/
 curl_close($ch);

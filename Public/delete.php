@@ -1,6 +1,6 @@
 <?php
 
-$data = array('id' => 8);
+$data = array('id' => 7);
 $url = "http://127.0.0.1:8000/rest/8/borrar";
 
 $ch = curl_init($url);
