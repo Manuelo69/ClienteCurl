@@ -22,18 +22,18 @@ $postData = array(
 
 curl_setopt($ch, CURLOPT_POST, TRUE);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 // Ejecutar la solicitud y obtener la respuesta
 $response = curl_exec($ch);
 //echo var_dump($response);
-/*
+
 // Verificar errores
 if (curl_errno($ch))
     echo curl_errno($ch);
 else {
-    $decoded = json_decode($response,true);
-    var_dump($decoded);
-    echo $decoded['message'];
+    $decoded = json_decode($response, false);
+    print($decoded->mensaje);
+
 }
 // Cerrar la sesión cURL*/
 curl_close($ch);
